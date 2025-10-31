@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}About - C. Todd{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>About Me</h1>
+    </div>
+</div>
+
+<section class="about-content">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Hello! 👋</h2>
+                <p>I'm C. Todd, a product manager, professor, and writer based in the Boston area.</p>
+
+                <p>I specialize in designing and creating software. I have experience with Python, JavaScript, and various frameworks. I'm passionate about creating tools that solve real problems and make people's lives easier.</p>
+                
+                <p>When I'm not building, you can find me writing about technology, startups, and whatever else catches my interest on my <a href="/writing" target="_blank">Substack</a>.</p>
+                
+                <h3>What I Do</h3>
+                <ul class="skills-list">
+                    <li>Software design </li>
+                    <li>Python & Flask applications</li>
+                    <li>Writing</li>
+                </ul>
+
+                <h3>Technologies I Work With</h3>
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Git</span>
+                </div>
+
+                <div id="contact" class="contact-section">
+                    <h3>Get In Touch</h3>
+                    <p>Want to say hello?</p>
+                    <p>Email me at: <a href="mailto:hello@ctodd.com">hello [at] ctodd [dot]com</a></p>
+                </div>
+            </div>
+            
+            <div class="about-sidebar">
+                <div class="profile-image">
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Chris Todd" onerror="this.src='https://via.placeholder.com/400x400?text=Your+Photo'">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

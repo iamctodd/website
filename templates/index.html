@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}C. Todd - Product & Professor{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1>Hi, I'm C. Todd</h1>
+        <p class="hero-subtitle">Product thinker. Code writer. Design lover. Professor by day, builder always.</p>
+        <div class="hero-cta">
+            <a href="/projects" class="btn btn-primary">View My Work</a>
+            <a href="/about" class="btn btn-secondary">Learn More About Me</a>
+        </div>
+    </div>
+</div>
+
+<section class="featured-work">
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Work</h2>
+            <a href="/projects" class="view-all">View All →</a>
+        </div>
+        
+        <div class="featured-project">
+            <div class="featured-project-image">
+                <img src="{{ url_for('static', filename='images/pcamp_buddy.png') }}" alt="Conference Networking Recommendation App">
+            </div>
+            <div class="featured-project-content">
+                <div class="project-role">Conference Lead, Designer & Developer</div>
+                <h3>Networking Recommendation App</h3>
+                <p class="project-description">Matches conference attendees with 2 other attendees based on shared interests and background, making networking effortless and meaningful.</p>
+                <div class="project-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Create React App</span>
+                    <span class="tag">Networking</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://pcampbos.netlify.app/" target="_blank" class="btn btn-secondary">View Live Demo</a>
+                    <a href="https://github.com/iamctodd/buddy" target="_blank" class="project-link">View Code →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-project featured-project-reverse">
+            <div class="featured-project-content">
+                <div class="project-role">Designer & Developer</div>
+                <h3>Brain Games App</h3>
+                <p class="project-description">Three web-based cognitive games—Memory Training, Problem Solving, and Memory—designed to help those with Traumatic Brain Injuries improve their memory and problem-solving abilities.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">Tailwind</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://braingames-2gjq.onrender.com/dashboard" target="_blank" class="btn btn-secondary">View Live Demo</a>
+                    <a href="https://github.com/iamctodd/braingames" target="_blank" class="project-link">View Code →</a>
+                </div>
+            </div>
+            <div class="featured-project-image">
+                <img src="{{ url_for('static', filename='images/brain_games.png') }}" alt="Brain Games App" onerror="this.src='https://via.placeholder.com/800x600/2563eb/ffffff?text=Brain+Games+App'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="latest-writing">
+    <div class="container">
+        <div class="section-header">
+            <h2>Latest Writing</h2>
+            <a href="/writing" class="view-all" target="_blank">View All →</a>
+        </div>
+        
+        {% if posts %}
+        <div class="posts-grid">
+            {% for post in posts %}
+            <article class="post-card">
+                <div class="post-meta">{{ post.published }}</div>
+                <h3><a href="{{ post.link }}" target="_blank">{{ post.title }}</a></h3>
+                <p class="post-summary">{{ post.summary|striptags }}</p>
+                <a href="{{ post.link }}" target="_blank" class="read-more">Read more →</a>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="no-posts">No posts available at the moment. Check back soon!</p>
+        {% endif %}
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Want to collaborate?</h2>
+        <p>I'm available for:</p>
+        <ul class="cta-list">
+            <li>Speaking engagements</li>
+            <li>Product strategy & management consulting</li>
+            <li>Teaching and mentoring</li>
+        </ul>
+        <div class="cta-contact">
+            <p>Let's talk: <a href="mailto:helloREMOVECAPS@ctodd.com" class="email-link">hello [at] ctodd [dot] com</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

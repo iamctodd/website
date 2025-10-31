@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}C. Todd - Product Guy, Professor, & Writer{% endblock %}</title>
+    <meta name="description" content="{% block description %}Personal website of C. Todd - software developer, writer, and technology enthusiast.{% endblock %}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="/" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+                <li><a href="/about" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
+                <li><a href="/projects" class="{% if request.endpoint == 'projects' %}active{% endif %}">Projects</a></li>
+                <li><a href="https://substack.com/@iamctodd" target="_blank">Writing →</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ current_year }} C Todd Lombardo. All rights reserved.</p>
+            <div class="social-links">
+                <!-- Add your social media links here -->
+                <a href="https://github.com/iamctodd" target="_blank">GitHub</a>
+                <a href="https://twitter.com/iamctodd" target="_blank">Twitter</a>
+                <a href="https://linkedin.com/in/ctoddlombardo" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElement = document.querySelector('footer p');
+            if (yearElement) {
+                yearElement.innerHTML = yearElement.innerHTML.replace('{{ current_year }}', new Date().getFullYear());
+            }
+        });
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
