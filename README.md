@@ -104,30 +104,6 @@ Place your profile photo at `static/images/profile.jpg`
    - `SUBSTACK_BLOG_URL`
 4. Deploy! Railway will automatically detect Flask and deploy
 
-### Render
-
-1. Create a new Web Service on [Render](https://render.com/)
-2. Connect your repository
-3. Use these settings:
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `gunicorn app:app`
-4. Add environment variables
-5. Deploy!
-
-### Heroku
-
-1. Install Heroku CLI
-2. Create a `Procfile`:
-   ```
-   web: gunicorn app:app
-   ```
-3. Deploy:
-   ```bash
-   heroku create your-app-name
-   git push heroku main
-   heroku config:set SUBSTACK_URL=your-url
-   ```
-
 ## Setting Up Custom Domain with Substack
 
 To use `blog.ctodd.com` for your Substack:
