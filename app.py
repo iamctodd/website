@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Configuration
 app.config['SUBSTACK_URL'] = 'https://ctodd.substack.com/feed'  # Update with your actual Substack URL
-app.config['SUBSTACK_BLOG_URL'] = 'ctodd.substack.com' 
+app.config['SUBSTACK_BLOG_URL'] = 'https://ctodd.substack.com'
 
 def get_latest_posts(limit=3):
     """Fetch latest posts from Substack RSS feed"""
