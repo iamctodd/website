@@ -1,3 +1,5 @@
+import ssl
+import urllib.request
 from flask import Flask, render_template, redirect
 import feedparser
 from datetime import datetime
@@ -11,18 +13,26 @@ app.config['SUBSTACK_BLOG_URL'] = 'https://ctodd.substack.com'
 def get_latest_posts(limit=3):
     """Fetch latest posts from Substack RSS feed"""
     try:
-        feed = feedparser.parse(app.config['SUBSTACK_URL'])
-        posts = []
+        # Bypass SSL verification
+        ssl_context = ssl.create_default_context()
+        ssl_context.check_hostname = False
+        ssl_context.verify_mode = ssl.CERT_NONE
         
+        # Parse the feed with SSL context
+        feed = feedparser.parse(app.config['SUBSTACK_URL'], handlers=[urllib.request.HTTPSHandler(context=ssl_context)])
+        print(f"Number of entries found: {len(feed.entries)}")
+        
+        if len(feed.entries) == 0:
+            print("WARNING: No entries found in feed!")
+            return []
+        
+        posts = []
         for entry in feed.entries[:limit]:
-            # Parse the date
+            print(f"Processing entry: {entry.title}")
             published = datetime(*entry.published_parsed[:6])
-            
-            # Extract a clean summary (remove HTML if present)
             summary = entry.get('summary', '')
             if len(summary) > 200:
                 summary = summary[:200] + '...'
-            
             posts.append({
                 'title': entry.title,
                 'link': entry.link,
@@ -30,12 +40,13 @@ def get_latest_posts(limit=3):
                 'published': published.strftime('%B %d, %Y'),
                 'published_date': published
             })
-        
+        print(f"Returning {len(posts)} posts")
         return posts
     except Exception as e:
         print(f"Error fetching Substack posts: {e}")
+        import traceback
+        traceback.print_exc()
         return []
-
 @app.route('/')
 def index():
     """Homepage with latest blog posts"""
