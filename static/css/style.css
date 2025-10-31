@@ -710,3 +710,60 @@ footer p {
         font-size: 0.875rem;
     }
 }
+.profile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-photo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive: ensure it looks good on mobile */
+@media (max-width: 768px) {
+  .profile-photo {
+    max-width: 300px;
+  }
+}
+.about-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-sidebar {
+  flex: 0 0 auto;
+}
+
+/* On smaller screens, stack vertically with image on top */
+@media (max-width: 768px) {
+  .about-grid {
+    flex-direction: column-reverse;
+  }
+  
+  .about-sidebar {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-photo {
+    max-width: 300px;
+  }
+}
