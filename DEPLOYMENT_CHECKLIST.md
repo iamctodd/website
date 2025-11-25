@@ -3,12 +3,12 @@
 ## Pre-Deployment Customization
 
 ### Required Changes
-- [ ] Update Substack URL in `app.py` or `.env` (line 9)
-- [ ] Update email in `templates/about.html` (replace `hello@ctodd.com`)
-- [ ] Add your bio and information in `templates/about.html`
+- [X] Update Substack URL in `app.py` or `.env` (line 9)
+- [X] Update email in `templates/about.html` (replace `hello@ctodd.com`)
+- [X] Add your bio and information in `templates/about.html`
 - [ ] Add your real projects in `templates/projects.html`
-- [ ] Update social media links in `templates/base.html` (footer section)
-- [ ] Add your profile photo to `static/images/profile.jpg`
+- [X] Update social media links in `templates/base.html` (footer section)
+- [X] Add your profile photo to `static/images/profile.jpg`
 
 ### Optional Customizations
 - [ ] Change color scheme in `static/css/style.css` (CSS variables at top)
