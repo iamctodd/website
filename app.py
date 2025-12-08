@@ -68,6 +68,11 @@ def writing():
     """Redirect to Substack blog"""
     return redirect(app.config['SUBSTACK_BLOG_URL'])
 
+@app.route('/new')
+def new_page():
+    """Redirect to new page"""
+    return render_template('new.html')
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

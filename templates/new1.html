@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C. Todd Lombardo - Product Leader, Author & Professor</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #4a4a4a;
+            --accent: #0066cc;
+            --accent-light: #e6f0ff;
+            --border: #e0e0e0;
+            --bg: #fafafa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background: white;
+            position: relative;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 80px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            max-width: 600px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 32px;
+            font-weight: 700;
+        }
+
+        /* About Section */
+        #about p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .credentials {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .credential-item {
+            padding: 20px;
+            background: var(--bg);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .credential-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .credential-item p {
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+
+        /* Work Section */
+        .work-item {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .work-item:last-child {
+            border-bottom: none;
+        }
+
+        .work-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .work-role {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .work-item p {
+            color: var(--secondary);
+            line-height: 1.7;
+        }
+
+        /* Writing/Speaking Section */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .content-card {
+            padding: 24px;
+            background: var(--bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-card:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            transform: translateY(-4px);
+        }
+
+        .content-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .content-card p {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .content-card .arrow {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            padding: 80px 24px !important;
+        }
+
+        #contact h2 {
+            color: white;
+        }
+
+        #contact p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+
+        .contact-btn:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .contact-btn.secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .contact-btn.secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--secondary);
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            .credentials {
+                grid-template-columns: 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, transparent 95%, rgba(0, 102, 204, 0.02) 95%, rgba(0, 102, 204, 0.02) 100%);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <h1>C. Todd Lombardo</h1>
+            <p class="tagline">Product leader, author & professor</p>
+            <p>Data nerd. Design geek. Product fanatic.</p>
+            <p>I help teams build better products, think strategically, and grow as leaders.</p>
+        </div>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#writing">Writing & Speaking</a>
+            <a href="#contact">Get in Touch</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>
+            With over 15 years in product and design, I've learned that great products come from asking the right questions, understanding what matters to users, and having the courage to challenge assumptions. I started as a scientist, became an engineer, moved into product management and design, and now spend my time helping teams think more strategically about their work.
+        </p>
+        <p>
+            My approach is grounded in data and research, but filtered through design thinking and a belief that the best solutions come when you involve your team in the problem-solving process. I'm equally comfortable diving into spreadsheets, facilitating design workshops, or writing about how product leaders can make better decisions.
+        </p>
+        <p>
+            When I'm not working on product challenges, I'm teaching at MICA and IE Business School, writing on my Substack about interruption and focus, or consulting with companies like Spotify, TripAdvisor, and The New York Times on product strategy.
+        </p>
+
+        <div class="credentials">
+            <div class="credential-item">
+                <h3>Author</h3>
+                <p>Three O'Reilly books: <em>Design Sprint</em>, <em>Product Roadmaps Relaunched</em>, and <em>Product Research Rules</em></p>
+            </div>
+            <div class="credential-item">
+                <h3>Professor</h3>
+                <p>Adjunct faculty at Maryland Institute College of Art (MICA) and IE Business School, Madrid</p>
+            </div>
+            <div class="credential-item">
+                <h3>Speaker & Mentor</h3>
+                <p>Regular speaker on product strategy, design thinking, and agile development. Mentor at Techstars.</p>
+            </div>
+            <div class="credential-item">
+                <h3>Background</h3>
+                <p>MBA from IE Business School. Master's from MICA. Originally trained as a scientist at UConn and Wharton.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work">
+        <h2>Work</h2>
+
+        <div class="work-item">
+            <h3>Hult International Business School</h3>
+            <p class="work-role">Director of Product & Experience</p>
+            <p>Leading product vision and user experience for an international business school navigating AI-driven transformation in higher education. Working at the intersection of education, technology, and institutional innovation.</p>
+        </div>
+
+        <div class="work-item">
+            <h3>Consulting & Advisory</h3>
+            <p class="work-role">Product Strategy Partner</p>
+            <p>Work with companies across industries—from startups to Fortune 500 organizations—on product roadmapping, research methodology, and design strategy. Recent clients include Spotify, TripAdvisor, FedEx, and The New York Times.</p>
+        </div>
+
+        <div class="work-item">
+            <h3>Previous Roles</h3>
+            <p>VP of Product & Experience at Openly (insurance tech), VP of Product/UX at MachineMetrics (industrial IoT), Head of Product at Workbar (co-working spaces). I've led product teams in early-stage startups and scaling companies, always focused on outcome-driven strategy.</p>
+        </div>
+    </section>
+
+    <section id="writing">
+        <h2>Writing & Speaking</h2>
+        <p style="margin-bottom: 32px; color: var(--secondary);">I share ideas on product strategy, research, roadmapping, and how to build thoughtful product organizations.</p>
+
+        <div class="content-grid">
+            <a href="https://ctodd.substack.com" class="content-card" target="_blank">
+                <h3>Substack Newsletter</h3>
+                <p>Essays on interruption, focus, and product thinking. Exploring how we work and what makes products better.</p>
+                <span class="arrow">→ Subscribe</span>
+            </a>
+
+            <a href="https://medium.com/@iamctodd" class="content-card" target="_blank">
+                <h3>Medium</h3>
+                <p>In-depth writing on product management, design, and strategic thinking. Earlier essays on product frameworks.</p>
+                <span class="arrow">→ Read on Medium</span>
+            </a>
+
+            <a href="https://www.oreilly.com/pub/au/6336" class="content-card" target="_blank">
+                <h3>Published Books</h3>
+                <p><em>Design Sprint</em>, <em>Product Roadmaps Relaunched</em>, and <em>Product Research Rules</em>—practical guides for product teams.</p>
+                <span class="arrow">→ View on O'Reilly</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/ctoddlombardo/" class="content-card" target="_blank">
+                <h3>LinkedIn</h3>
+                <p>Articles and updates on product, education, AI, and the future of work. I connect with people I've met in real life.</p>
+                <span class="arrow">→ Connect</span>
+            </a>
+
+            <a href="https://www.mica.edu/graduate-programs/data-analytics-and-visualization-mps/c-todd-lombardo/" class="content-card" target="_blank">
+                <h3>Teaching at MICA</h3>
+                <p>Faculty profile and courses in data analytics and visualization for graduate students.</p>
+                <span class="arrow">→ Learn more</span>
+            </a>
+
+            <a href="https://www.hult.edu/" class="content-card" target="_blank">
+                <h3>Speaking & Workshops</h3>
+                <p>Available for keynotes, workshops, and consulting on product strategy, research, and organizational design.</p>
+                <span class="arrow">→ Get in touch</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Let's Work Together</h2>
+        <p>Whether you're looking to improve your product strategy, need a speaker for your conference, want to explore a consulting engagement, or just want to connect—I'd love to hear from you.</p>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/ctoddlombardo/" class="contact-btn" target="_blank">LinkedIn</a>
+            <a href="https://ctodd.substack.com" class="contact-btn" target="_blank">Substack</a>
+            <a href="mailto:hello@ctodd.com" class="contact-btn secondary">Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 C. Todd Lombardo. Data nerd. Design geek. Product fanatic.</p>
+    </footer>
+</body>
+</html>
